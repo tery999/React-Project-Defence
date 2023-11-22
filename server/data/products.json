@@ -1,0 +1,29 @@
+{
+    "c64db398-91cd-487c-b900-86058c0422f8": {
+        "name": "Washing machine",
+        "category": "Home Appliances",
+        "price": "40",
+        "condition": "Good",
+        "imageUrl": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/01/action-adventure-games-tomb-raider.jpg",
+        "summary": "Summary here",
+        "_id": "c64db398-91cd-487c-b900-86058c0422f8"
+    },
+    "daf55cd4-9aa1-4b7a-82a9-fbdb74aaa84b": {
+        "name": "TV",
+        "category": "Electronics",
+        "price": "140",
+        "condition": "Used",
+        "imageUrl": "https://img.freepik.com/free-vector/joystick-game-sport-technology_138676-2045.jpg?w=2000",
+        "summary": "asdasdasd",
+        "_id": "daf55cd4-9aa1-4b7a-82a9-fbdb74aaa84b"
+    },
+    "18bfdb21-333b-42bd-a32c-c114263f2569": {
+        "name": "Playstation",
+        "category": "Electronics",
+        "price": "340",
+        "condition": "New",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Ultimate_MK3.png/220px-Ultimate_MK3.png",
+        "summary": "PS6",
+        "_id": "18bfdb21-333b-42bd-a32c-c114263f2569"
+    }
+}

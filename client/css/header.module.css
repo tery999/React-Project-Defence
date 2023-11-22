@@ -1,0 +1,14 @@
+.navStyle {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: aqua;
+    height: 160px;
+}
+
+.navStyle > a {
+    font-size:  40px;
+
+}
+
+
