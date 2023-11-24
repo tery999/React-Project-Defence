@@ -6,3 +6,16 @@ export const getAll = async () => {
 
     return data;
 };
+
+export const create = async(data) => {
+    const response = await fetch(URL , {
+        method: "POST" ,
+        headers: {
+            "content-type": "aplication/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json()
+    console.log(result);
+}

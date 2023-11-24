@@ -6,7 +6,7 @@
     height: 160px;
 }
 
-.navStyle > a {
+.navStyle > li {
     font-size:  40px;
 
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from "../../../css/AddProductForm.module.css"
+import * as productService from "../../services/productService"
 
 export default function AddProduct() {
     const [inputs, setInputs] = useState({});
@@ -13,6 +14,7 @@ export default function AddProduct() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(inputs)
+        productService.create(inputs);
     }
 
     return (
@@ -51,6 +53,14 @@ export default function AddProduct() {
                     <option value="Used">Used</option>
                     <option value="Bad">Bad</option>
                 </select>
+                <label htmlFor='imageUrl'>imageUrl:
+                    <input
+                        type="text"
+                        name="imageUrl"
+                        value={inputs.imageUrl || ""}
+                        onChange={handleChange}
+                    />
+                </label>
                 <label htmlFor="summary">
                     Additional information:
                 </label>
