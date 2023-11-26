@@ -7,6 +7,13 @@ export const getAll = async () => {
     return data;
 };
 
+export const getOne = async (id) => {
+    const response = await fetch(`${URL}/${id}`);
+    const data = await response.json();
+
+    return data;
+};
+
 export const create = async(data) => {
     const response = await fetch(URL , {
         method: "POST" ,
