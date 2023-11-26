@@ -10,8 +10,12 @@ export default function Header () {
         <li>
             <Link to="AddProduct">Add product</Link>
           </li>
-        <a href="">Gallery</a>
-        <a href="">Contact</a>
+          <li>
+            <Link to="Login">Login</Link>
+          </li>
+          <li>
+            <Link to="Register">Register</Link>
+          </li>
     </nav>
     )
 }

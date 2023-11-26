@@ -27,3 +27,8 @@
 .text {
     text-align: center;
 }
+
+.Details {
+    font-size: 25px;
+    text-decoration: none;
+}

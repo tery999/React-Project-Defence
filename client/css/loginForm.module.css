@@ -1,0 +1,42 @@
+.LoginStyle {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginForm {
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.loginForm p {
+    font-size: 30px;
+}
+
+.loginForm input[type=text], input[type=password] {
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .loginForm input[type=submit] {
+    width: 80%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 20px;
+    padding: 14px 20px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
