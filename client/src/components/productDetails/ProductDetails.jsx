@@ -14,7 +14,7 @@ export default function ProductDetails() {
         ProductService.getOne(id)
             .then(setProduct)
 
-        commentService.getAllCurComments()
+        commentService.getAllCurComments(id)
             .then(setComments)
             .then(console.log(comments))
     }, [id])
@@ -23,9 +23,11 @@ export default function ProductDetails() {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
 
-        const comment = await commentService.createComment(id,
+        const CurComment = await commentService.createComment(id,
             formData.get("username"),
             formData.get("addComment"))
+
+            setComments(state => [...state, CurComment]);
     };
 
 
@@ -56,11 +58,14 @@ export default function ProductDetails() {
                 <h2>Comments:</h2>
                 <ul>
                     {comments.map(com => {
-                        return (<div>
+                        return (<div key={com._id}>
                             <p>  {com.user} {com.comment} </p>
                         </div>)
                     })}
                 </ul>
+                {comments.length === 0 && (
+                    <h2> There are currently no comments</h2>
+                )}
             </div>
 
         </div>

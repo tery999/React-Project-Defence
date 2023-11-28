@@ -10,11 +10,13 @@ export const createComment = async (id, user, comment) => {
 
     })
 
-    return newComment;
+    const result = await newComment.json();
+    return result;
 }
 
-export const getAllCurComments = async () => {
+export const getAllCurComments = async (id) => {
     const response = await fetch( URL );
     const result = await response.json();
-    return Object.values(result);
+    const filtered = await Object.values(result).filter(comment => comment.id === id);
+    return filtered
 }
