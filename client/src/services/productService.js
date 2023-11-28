@@ -24,5 +24,4 @@ export const create = async(data) => {
     });
 
     const result = await response.json()
-    console.log(result);
 }

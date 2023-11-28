@@ -8,22 +8,24 @@ import * as commentService from "../../services/commentService"
 export default function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState({});
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         ProductService.getOne(id)
             .then(setProduct)
+
+        commentService.getAllCurComments()
+            .then(setComments)
+            .then(console.log(comments))
     }, [id])
 
     const addCommentHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
 
-        const comment = await commentService.createComment( id ,
+        const comment = await commentService.createComment(id,
             formData.get("username"),
             formData.get("addComment"))
-
-            console.log(comment);
-
     };
 
 
@@ -43,15 +45,22 @@ export default function ProductDetails() {
                 </div>
             </div>
             <div>
-                <h2>Comments:</h2>
-            </div>
-            <div>
                 <label htmlFor="addComment"> Add new comment </label>
-                <form className = "commentForm" onSubmit={addCommentHandler}>
-                    <input type="text" name="username" placeholder="username"/>
-                <textarea name="addComment" placeholder="Add your comment"/>
-                <input type="submit" />
+                <form className="commentForm" onSubmit={addCommentHandler}>
+                    <input type="text" name="username" placeholder="username" />
+                    <textarea name="addComment" placeholder="Add your comment" />
+                    <input type="submit" />
                 </form>
+            </div>
+            <div className="ProductComments">
+                <h2>Comments:</h2>
+                <ul>
+                    {comments.map(com => {
+                        return (<div>
+                            <p>  {com.user} {com.comment} </p>
+                        </div>)
+                    })}
+                </ul>
             </div>
 
         </div>

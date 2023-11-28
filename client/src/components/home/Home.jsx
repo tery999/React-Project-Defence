@@ -10,8 +10,6 @@ export default function Home() {
     useEffect(() => {
         productService.getAll()
             .then(result => setProducts(result));
-
-            console.log(products)
     }, []);
 
     return (

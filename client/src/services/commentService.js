@@ -12,3 +12,9 @@ export const createComment = async (id, user, comment) => {
 
     return newComment;
 }
+
+export const getAllCurComments = async () => {
+    const response = await fetch( URL );
+    const result = await response.json();
+    return Object.values(result);
+}
