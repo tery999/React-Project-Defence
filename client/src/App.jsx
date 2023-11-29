@@ -10,15 +10,25 @@ import AuthContext from "./context/authContext"
 import * as userService from "./services/userService";
 
 function App() {
-
-  const [auth, setAuth] = useState()
+  const navigate = useNavigate();
+  const [auth, setAuth] = useState({})
 
   const loginHandler = async (values) => {
    const result = await userService.login(values.email , values.password)
    console.log(result);
+   setAuth(result);
+   navigate("/");
   }
+
+  const values = {
+    loginHandler,
+    email: auth.email,
+    isLogged: !!auth.email // double exclamation -> convert to true or false
+  }
+
+
   return (
-    <AuthContext.Provider value={{loginHandler}}>
+    <AuthContext.Provider value={values}>
       <>
         <Header />
 

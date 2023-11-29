@@ -1,12 +1,16 @@
 .navStyle {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: center;
     background-color: aqua;
     height: 160px;
 }
 
-.navStyle > li {
+.headerLinks {
+    display: flex;
+    align-items: center; 
+}
+
+.headerLinks > li {
     font-size:  40px;
 
 }

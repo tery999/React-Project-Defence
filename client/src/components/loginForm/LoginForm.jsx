@@ -6,6 +6,7 @@ export default function LoginForm() {
     const { loginHandler } = useContext(AuthContext);
 
     const [inputs, setInputs] = useState({});
+    const [error, setError] = useState(false);
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -15,7 +16,8 @@ export default function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        loginHandler({...inputs})
+        loginHandler( {...inputs}) 
+       
     }
 
     return (
@@ -39,6 +41,9 @@ export default function LoginForm() {
                         onChange={handleChange}
                     />
                 </label>
+                {error === true && 
+                <p>Invalid email or password</p>
+                }
                 <input type="submit" />
             </form>
         </div>
