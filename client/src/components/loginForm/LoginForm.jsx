@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from "../../../css/loginForm.module.css"
+import AuthContext from '../../context/authContext';
 
 export default function LoginForm() {
+    const { loginHandler } = useContext(AuthContext);
 
     const [inputs, setInputs] = useState({});
 
@@ -13,8 +15,7 @@ export default function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(inputs)
-        
+        loginHandler({...inputs})
     }
 
     return (
