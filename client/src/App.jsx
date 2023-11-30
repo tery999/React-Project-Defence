@@ -12,7 +12,11 @@ import * as userService from "./services/userService";
 
 function App() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState({})
+  const [auth, setAuth] = useState(()=> {
+    // initial function to delete token , return empty object
+    localStorage.removeItem("accessToken");
+    return {};
+  })
 
   const loginHandler = async (values) => {
    const result = await userService.login(values.email , values.password)
