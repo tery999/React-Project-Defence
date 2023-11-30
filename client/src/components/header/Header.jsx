@@ -18,12 +18,15 @@ export default function Header() {
             <Link to="AddProduct">Add product</Link>
           </li>
           <li>
-            <Link to="LogOut">Logout</Link>
+            <Link to="Logout">Logout</Link>
           </li>
         </div>
       )}
       {!isLogged && (
         <div className={styles.headerLinks}>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>
             <Link to="Login">Login</Link>
           </li>
