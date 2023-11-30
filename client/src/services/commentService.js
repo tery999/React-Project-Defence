@@ -4,14 +4,14 @@ import AuthContext from "../context/authContext";
 const URL = "http://localhost:3030/data/comments";
 
 const token = localStorage.getItem("accessToken");
-export const createComment = async (id, comment) => {
+export const createComment = async (productId, comment) => {
     const newComment = await fetch( URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "X-Authorization": token,
           },
-          body: JSON.stringify( {id, comment})
+          body: JSON.stringify( {productId, comment})
 
     });
 
@@ -19,14 +19,16 @@ export const createComment = async (id, comment) => {
     return result;
 };
 
-export const getAllCurComments = async (id) => {
+export const getAllCurComments = async (productId) => {
     const query = new URLSearchParams({
-        where: `id="${id}"`,
+        where: `productId="${productId}"`,
+        load: `author=_ownerId:users`
     })
     const response = await fetch(`${URL}?${query}`);
     if (!response.ok) {
         return [] ;
     }
     const result = await response.json();
+    console.log(result);
     return result;
 };
