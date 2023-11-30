@@ -18,7 +18,7 @@ export default function Home() {
 
             <div className={styles.homeCatalog}>
 
-            {Object.values(products).map(prod => (
+            {products.map(prod => (
                 <ProductItems key={prod._id} {...prod} />
             ))}
 

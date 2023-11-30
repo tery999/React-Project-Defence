@@ -1,22 +1,32 @@
-const URL = "http://localhost:3030/jsonstore/comments";
+import { useContext } from "react";
+import AuthContext from "../context/authContext";
 
-export const createComment = async (id, user, comment) => {
+const URL = "http://localhost:3030/data/comments";
+
+const token = localStorage.getItem("accessToken");
+export const createComment = async (id, comment) => {
     const newComment = await fetch( URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "X-Authorization": token,
           },
-          body: JSON.stringify( {id, user, comment})
+          body: JSON.stringify( {id, comment})
 
-    })
+    });
 
     const result = await newComment.json();
     return result;
-}
+};
 
 export const getAllCurComments = async (id) => {
-    const response = await fetch( URL );
+    const query = new URLSearchParams({
+        where: `id="${id}"`,
+    })
+    const response = await fetch(`${URL}?${query}`);
+    if (!response.ok) {
+        return [] ;
+    }
     const result = await response.json();
-    const filtered = await Object.values(result).filter(comment => comment.id === id);
-    return filtered
-}
+    return result;
+};

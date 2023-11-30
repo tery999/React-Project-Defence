@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import * as ProductService from "../../services/productService"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "../../../css/productDetailsMenu.module.css";
 import * as commentService from "../../services/commentService"
+import AuthContext from "../../context/authContext";
 
 
 export default function ProductDetails() {
+    const { isLogged } = useContext(AuthContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
@@ -24,10 +26,9 @@ export default function ProductDetails() {
         const formData = new FormData(e.currentTarget);
 
         const CurComment = await commentService.createComment(id,
-            formData.get("username"),
             formData.get("addComment"))
 
-            setComments(state => [...state, CurComment]);
+        setComments(state => [...state, CurComment]);
     };
 
 
@@ -46,18 +47,26 @@ export default function ProductDetails() {
                     <h2> Information: {product.summary}</h2>
                 </div>
             </div>
-            <div>
-                <label htmlFor="addComment"> Add new comment </label>
-                <form className="commentForm" onSubmit={addCommentHandler}>
-                    <input type="text" name="username" placeholder="username" />
-                    <textarea name="addComment" placeholder="Add your comment" />
-                    <input type="submit" />
-                </form>
-            </div>
+            {isLogged && (
+                <div>
+                    <label htmlFor="addComment"> Add new comment </label>
+                    <form className="commentForm" onSubmit={addCommentHandler}>
+                        <textarea name="addComment" placeholder="Add your comment" />
+                        <input type="submit" />
+                    </form>
+                </div>
+            )}
+
+            {!isLogged && (
+                <div>
+                   <h2>Please login to comment</h2>
+                </div>
+            )}
+
             <div className="ProductComments">
                 <h2>Comments:</h2>
                 <ul>
-                    {comments.map(com => {
+                    {comments.map( (com ) => {
                         return (<div key={com._id}>
                             <p>  {com.user} {com.comment} </p>
                         </div>)

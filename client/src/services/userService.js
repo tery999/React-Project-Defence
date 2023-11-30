@@ -27,6 +27,8 @@ export const register = async (email, password ) => {
         },
         body: JSON.stringify({ email, password })
     })
+
+    return response.json();
 }
 
 export const logout = async () => {
