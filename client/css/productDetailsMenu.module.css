@@ -32,3 +32,10 @@
 .title {
     font-size: 40px;
 }
+
+.DeleteButtonComment{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    width: 222px;
+}

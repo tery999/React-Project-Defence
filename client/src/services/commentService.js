@@ -34,3 +34,16 @@ export const getAllCurComments = async (productId) => {
     console.log(result);
     return result;
 };
+
+export const deleteComment = async (commentId) => {
+    const token = localStorage.getItem("accessToken");
+    const deletedComment = await fetch( `${URL}/${commentId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Authorization": token,
+          },
+
+    });
+
+};

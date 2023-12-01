@@ -38,6 +38,13 @@ export default function ProductDetails() {
            navigate("/");
         }
 
+        const commentDeleteClickHandler = async (commentId) => {
+            await commentService.deleteComment(commentId);
+            const filtered = comments.filter ( (comnt)=> comnt._id !== commentId);
+            console.log(filtered);
+            setComments(filtered);
+        }
+
 
     return (
         <div className={styles.productDetailsMenu}>
@@ -56,7 +63,7 @@ export default function ProductDetails() {
 
                             <Link to={`/Products/${id}/edit`} className="Button"> <button> EDIT </button></Link>
 
-                            <button onClick={deleteClickHandler}> DELETE </button>
+                            <button onClick={deleteClickHandler}  className={styles.DeleteButtonProduct}> DELETE </button>
                         </div>
                     )}
                 </div>
@@ -82,7 +89,11 @@ export default function ProductDetails() {
                 <ul>
                     {comments.map((com) => {
                         return (<div key={com._id}>
-                            <p> {com.author.email} {com.comment} </p>
+                            <p> {com.author.email}:  {com.comment} </p>
+                            {com._ownerId === userId && (
+                                <button onClick={ ()=>commentDeleteClickHandler(com._id)} 
+                                className={styles.DeleteButtonComment}>Delete Comment</button>
+                            )}
                         </div>)
                     })}
                 </ul>
