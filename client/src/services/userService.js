@@ -2,9 +2,8 @@ const URL_LOGIN = "http://localhost:3030/users/login"
 const URL_REGISTER = "http://localhost:3030/users/register"
 const URL_LOGOUT = "http://localhost:3030/users/logout"
 
-const token = localStorage.getItem("accessToken");
+
 export const login = async (email, password) => {
-    try {
     const response = await fetch(URL_LOGIN, {
         method: "POST",
         headers: {
@@ -14,9 +13,7 @@ export const login = async (email, password) => {
     })
 
     return response.json();
-} catch (error) {
-    return error;
-}
+
 }
 
 export const register = async (email, password ) => {
@@ -32,6 +29,7 @@ export const register = async (email, password ) => {
 }
 
 export const logout = async () => {
+    const token = localStorage.getItem("accessToken");
     const response = await fetch(URL_LOGOUT, {
         method: "GET",
         headers: {
@@ -40,5 +38,5 @@ export const logout = async () => {
         }
         
     })
-    console.log(token);
+    // console.log(token);
 }

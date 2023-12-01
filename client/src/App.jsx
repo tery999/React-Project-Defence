@@ -20,11 +20,15 @@ function App() {
   })
 
   const loginHandler = async (values) => {
+    try {
    const result = await userService.login(values.email , values.password)
    console.log(result);
    setAuth(result);
    localStorage.setItem("accessToken", result.accessToken)
    navigate("/");
+    } catch (err) {
+      console.log(`THIS IS THE ERROR ${err}`)
+    }
   }
 
   const registerHandler = async(values) => {

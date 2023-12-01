@@ -1,11 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import styles from "../../../css/registerForm.module.css"
 import AuthContext from '../../context/authContext';
+import * as errorService from "../../services/errorService"
 
 export default function LoginForm() {
    const {registerHandler} = useContext(AuthContext);
+   const [error, setError] = useState({});
 
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: "",
+        repassword: ""
+    });
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -15,7 +21,12 @@ export default function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+       const curErrors = errorService.registerFormError(inputs)
+       setError(curErrors);
+
+       if (Object.keys(curErrors).length === 0 ) {
         registerHandler( {...inputs});
+       } 
         
     }
 
@@ -31,6 +42,9 @@ export default function LoginForm() {
                         onChange={handleChange}
                     />
                 </label>
+                {error.email && (
+                    <p>{error.email}</p>
+                )}
                 <p>Password</p>
                 <label htmlFor='password'>
                     <input
@@ -39,16 +53,22 @@ export default function LoginForm() {
                         value={inputs.password || ""}
                         onChange={handleChange}
                     />
+                    {error.password && (
+                    <p>{error.password}</p>
+                )}
                 </label>
                 <p>Repeat Password</p>
                 <label htmlFor='repassword'>
                     <input
                         type="password"
                         name="repassword"
-                        value={inputs.password || ""}
+                        value={inputs.repassword || ""}
                         onChange={handleChange}
                     />
                 </label>
+                {error.repassword && (
+                    <p>{error.repassword}</p>
+                )}
                 <input type="submit" />
             </form>
         </div>

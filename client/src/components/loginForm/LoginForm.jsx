@@ -3,7 +3,7 @@ import styles from "../../../css/loginForm.module.css"
 import AuthContext from '../../context/authContext';
 
 export default function LoginForm() {
-    const { loginHandler } = useContext(AuthContext);
+    const { loginHandler , email } = useContext(AuthContext);
 
     const [inputs, setInputs] = useState({});
     const [error, setError] = useState(false);
@@ -14,10 +14,10 @@ export default function LoginForm() {
         setInputs(values => ({ ...values, [name]: value }))
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        loginHandler( {...inputs}) 
-       
+       await loginHandler( {...inputs}) 
+       console.log("THIS IS THE RESULT" , email);
     }
 
     return (
