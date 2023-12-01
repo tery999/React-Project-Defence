@@ -42,3 +42,17 @@ export const edit = async(data) => {
 
     const result = await response.json()
 }
+
+export const deleteProduct= async(id) => {
+    const token = localStorage.getItem("accessToken");
+    const response = await fetch(`${URL}/${id}`, {
+        method: "DELETE" ,
+        headers: {
+            "content-type": "aplication/json",
+            "X-Authorization": token,
+        },
+    });
+
+    const result = await response.json()
+}
+

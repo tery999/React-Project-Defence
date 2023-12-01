@@ -4,10 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import styles from "../../../css/productDetailsMenu.module.css";
 import * as commentService from "../../services/commentService"
 import AuthContext from "../../context/authContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function ProductDetails() {
+    const navigate = useNavigate();
     const { isLogged, email, userId } = useContext(AuthContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
@@ -32,6 +33,10 @@ export default function ProductDetails() {
         setComments(state => [...state, { ...CurComment, author: { email } }]);
     };
 
+        const deleteClickHandler = async () => {
+           await ProductService.deleteProduct(id);
+           navigate("/");
+        }
 
 
     return (
@@ -49,9 +54,9 @@ export default function ProductDetails() {
                     {product._ownerId === userId && (
                         <div className="Buttons">
 
-                            <Link to={`/Products/${id}/edit`}className="Button"> EDIT </Link>
+                            <Link to={`/Products/${id}/edit`} className="Button"> <button> EDIT </button></Link>
 
-                            <Link to="Delete"> DELETE </Link>
+                            <button onClick={deleteClickHandler}> DELETE </button>
                         </div>
                     )}
                 </div>
