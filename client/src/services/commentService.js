@@ -3,8 +3,9 @@ import AuthContext from "../context/authContext";
 
 const URL = "http://localhost:3030/data/comments";
 
-const token = localStorage.getItem("accessToken");
+
 export const createComment = async (productId, comment) => {
+    const token = localStorage.getItem("accessToken");
     const newComment = await fetch( URL, {
         method: "POST",
         headers: {
@@ -14,6 +15,7 @@ export const createComment = async (productId, comment) => {
           body: JSON.stringify( {productId, comment})
 
     });
+    console.log( `TOKEN IS` , token);
 
     const result = await newComment.json();
     return result;

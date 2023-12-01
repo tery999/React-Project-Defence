@@ -4,10 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import styles from "../../../css/productDetailsMenu.module.css";
 import * as commentService from "../../services/commentService"
 import AuthContext from "../../context/authContext";
+import { Link } from "react-router-dom";
 
 
 export default function ProductDetails() {
-    const { isLogged } = useContext(AuthContext);
+    const { isLogged, email, userId } = useContext(AuthContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
@@ -28,7 +29,7 @@ export default function ProductDetails() {
         const CurComment = await commentService.createComment(id,
             formData.get("addComment"))
 
-        setComments(state => [...state, CurComment]);
+        setComments(state => [...state, { ...CurComment, author: { email } }]);
     };
 
 
@@ -45,6 +46,14 @@ export default function ProductDetails() {
                     <h2> Price: {product.price} $</h2>
                     <h2> Condition: {product.condition}</h2>
                     <h2> Information: {product.summary}</h2>
+                    {product._ownerId === userId && (
+                        <div className="Buttons">
+
+                            <Link to={`/Products/${id}/edit`}className="Button"> EDIT </Link>
+
+                            <Link to="Delete"> DELETE </Link>
+                        </div>
+                    )}
                 </div>
             </div>
             {isLogged && (
@@ -59,16 +68,16 @@ export default function ProductDetails() {
 
             {!isLogged && (
                 <div>
-                   <h2>Please login to comment</h2>
+                    <h2>Please login to comment</h2>
                 </div>
             )}
 
             <div className="ProductComments">
                 <h2>Comments:</h2>
                 <ul>
-                    {comments.map( (com ) => {
+                    {comments.map((com) => {
                         return (<div key={com._id}>
-                            <p>  {com.user} {com.comment} </p>
+                            <p> {com.author.email} {com.comment} </p>
                         </div>)
                     })}
                 </ul>
