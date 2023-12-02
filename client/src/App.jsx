@@ -7,7 +7,8 @@ import RegisterForm from "./components/registerForm/RegisterForm"
 import LogoutForm from "./components/home/logoutForm/LogoutForm"
 import ProductDetails from "./components/productDetails/ProductDetails"
 import ProductEdit from "./components/productEdit/ProductEdit"
-import { useState } from "react"
+import Cart from "./components/cart/Cart"
+import { useEffect, useState } from "react"
 import AuthContext from "./context/authContext"
 import * as userService from "./services/userService";
 
@@ -18,6 +19,7 @@ function App() {
     localStorage.removeItem("accessToken");
     return {};
   })
+  const [cart, setCart] = useState([]);
 
   const loginHandler = async (values) => {
     try {
@@ -52,10 +54,33 @@ function App() {
 
   }
 
+  const cartBuyHandler = (product) => {
+    debugger;
+    const productExists = cart.some(prod => {
+      if (prod.product.name === product.name) {
+        console.log("Product already exists")
+        return true;
+      } else {
+        console.log("Product is added")
+        return false;
+      }
+    });
+
+    if (productExists === false) {
+      setCart(cart => [...cart, {product}]);
+    }
+  }
+
+
+  useEffect( ()=> {
+    console.log(cart)
+  },[cart]);
+
   const values = {
     loginHandler,
     registerHandler,
     logoutHandlder,
+    cartBuyHandler,
     email: auth?.email || null,
     userId: auth?._id || null,
     isLogged: !!auth?.email || null // double exclamation -> convert to true or false
@@ -75,6 +100,7 @@ function App() {
           <Route path="/Logout" element={<LogoutForm />} />
           <Route path="/Products/:id" element={<ProductDetails />} />
           <Route path="/Products/:id/edit" element={<ProductEdit />} />
+          <Route path="Cart" element={<Cart/>} />
         </Routes>
 
       </>

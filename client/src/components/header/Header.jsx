@@ -26,6 +26,9 @@ export default function Header() {
             <Link to="AddProduct">Add product</Link>
           </li>
           <li>
+            <Link to="Cart">Cart</Link>
+          </li>
+          <li>
             <Link to="Logout">Logout</Link>
           </li>
         </div>

@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function ProductDetails() {
     const navigate = useNavigate();
-    const { isLogged, email, userId } = useContext(AuthContext);
+    const { isLogged, email, userId , cartBuyHandler} = useContext(AuthContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
@@ -33,17 +33,22 @@ export default function ProductDetails() {
         setComments(state => [...state, { ...CurComment, author: { email } }]);
     };
 
-        const deleteClickHandler = async () => {
-           await ProductService.deleteProduct(id);
-           navigate("/");
-        }
+    const deleteClickHandler = async () => {
+        await ProductService.deleteProduct(id);
+        navigate("/");
+    }
 
-        const commentDeleteClickHandler = async (commentId) => {
-            await commentService.deleteComment(commentId);
-            const filtered = comments.filter ( (comnt)=> comnt._id !== commentId);
-            console.log(filtered);
-            setComments(filtered);
-        }
+    const commentDeleteClickHandler = async (commentId) => {
+        await commentService.deleteComment(commentId);
+        const filtered = comments.filter((comnt) => comnt._id !== commentId);
+        console.log(filtered);
+        setComments(filtered);
+    }
+
+    const buyClickHandler = (product) => {
+        cartBuyHandler(product);
+        console.log("Bought");
+    }
 
 
     return (
@@ -63,7 +68,13 @@ export default function ProductDetails() {
 
                             <Link to={`/Products/${id}/edit`} className="Button"> <button> EDIT </button></Link>
 
-                            <button onClick={deleteClickHandler}  className={styles.DeleteButtonProduct}> DELETE </button>
+                            <button onClick={deleteClickHandler} className={styles.DeleteButtonProduct}> DELETE </button>
+                        </div>
+                    )}
+
+                    {product._ownerId !== userId && isLogged && (
+                        <div className="Buttons">
+                            <button onClick={()=>buyClickHandler(product)} className={styles.DeleteButtonProduct}> BUY </button>
                         </div>
                     )}
                 </div>
@@ -91,8 +102,8 @@ export default function ProductDetails() {
                         return (<div key={com._id}>
                             <p> {com.author.email}:  {com.comment} </p>
                             {com._ownerId === userId && (
-                                <button onClick={ ()=>commentDeleteClickHandler(com._id)} 
-                                className={styles.DeleteButtonComment}>Delete Comment</button>
+                                <button onClick={() => commentDeleteClickHandler(com._id)}
+                                    className={styles.DeleteButtonComment}>Delete Comment</button>
                             )}
                         </div>)
                     })}
