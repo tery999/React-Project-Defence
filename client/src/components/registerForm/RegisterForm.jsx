@@ -43,7 +43,7 @@ export default function LoginForm() {
                     />
                 </label>
                 {error.email && (
-                    <p>{error.email}</p>
+                    <p className={styles.ErrorMessage}>{error.email}</p>
                 )}
                 <p>Password</p>
                 <label htmlFor='password'>
@@ -54,7 +54,7 @@ export default function LoginForm() {
                         onChange={handleChange}
                     />
                     {error.password && (
-                    <p>{error.password}</p>
+                    <p className={styles.ErrorMessage}>{error.password}</p>
                 )}
                 </label>
                 <p>Repeat Password</p>
@@ -67,7 +67,7 @@ export default function LoginForm() {
                     />
                 </label>
                 {error.repassword && (
-                    <p>{error.repassword}</p>
+                    <p className={styles.ErrorMessage}>{error.repassword}</p>
                 )}
                 <input type="submit" />
             </form>

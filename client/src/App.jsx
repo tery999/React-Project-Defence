@@ -28,6 +28,7 @@ function App() {
    navigate("/");
     } catch (err) {
       console.log(`THIS IS THE ERROR ${err}`)
+      throw Error("ERRPR AT LOGIN HANDLER", {err});
     }
   }
 
@@ -35,7 +36,9 @@ function App() {
     const result = await userService.register(values.email, values.password);
     console.log(result);
     setAuth(result);
+    if(result.accessToken !== undefined) {
     localStorage.setItem("accessToken", result.accessToken)
+    }
     navigate("/");
   }
 
@@ -53,9 +56,9 @@ function App() {
     loginHandler,
     registerHandler,
     logoutHandlder,
-    email: auth.email,
-    userId: auth._id,
-    isLogged: !!auth.email // double exclamation -> convert to true or false
+    email: auth?.email || null,
+    userId: auth?._id || null,
+    isLogged: !!auth?.email || null // double exclamation -> convert to true or false
   }
 
 

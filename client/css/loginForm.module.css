@@ -40,3 +40,6 @@
     cursor: pointer;
   }
   
+  .ErrorMessage{
+    color: red;
+  }

@@ -16,8 +16,12 @@ export default function LoginForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        try {
        await loginHandler( {...inputs}) 
-       console.log("THIS IS THE RESULT" , email);
+        } catch (err) {
+            console.log("ERROR AT HANDLE SUBMIT", err);
+            setError(true);
+        }
     }
 
     return (
@@ -42,7 +46,7 @@ export default function LoginForm() {
                     />
                 </label>
                 {error === true && 
-                <p>Invalid email or password</p>
+                <p className={styles.ErrorMessage}>Invalid email or password</p>
                 }
                 <input type="submit" />
             </form>

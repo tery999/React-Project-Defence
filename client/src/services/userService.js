@@ -4,6 +4,7 @@ const URL_LOGOUT = "http://localhost:3030/users/logout"
 
 
 export const login = async (email, password) => {
+    try{
     const response = await fetch(URL_LOGIN, {
         method: "POST",
         headers: {
@@ -12,7 +13,14 @@ export const login = async (email, password) => {
         body: JSON.stringify({ email, password })
     })
 
+    if(!response.ok) {
+        throw Error("There has been an error");
+    }
+
     return response.json();
+} catch (err) {
+    console.log("HERE IS THE ERROR", err);
+}
 
 }
 
