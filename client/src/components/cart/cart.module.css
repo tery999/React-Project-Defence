@@ -1,0 +1,41 @@
+
+.CartPageBox {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.CartPage {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 800px;
+
+}
+
+.productCart {
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    background-color: azure;
+    gap: 50px;
+    border: 2px ;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: rgb(98, 72, 121);
+}
+.productCart p {
+    font-size: 20px;
+}
+
+.productCart img {
+    width: 50px;;
+    height: 50px;
+}
