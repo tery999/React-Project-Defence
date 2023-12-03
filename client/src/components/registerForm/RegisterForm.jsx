@@ -3,9 +3,10 @@ import styles from "../../../css/registerForm.module.css"
 import AuthContext from '../../context/authContext';
 import * as errorService from "../../services/errorService"
 
-export default function LoginForm() {
-   const {registerHandler} = useContext(AuthContext);
-   const [error, setError] = useState({});
+export default function registerForm() {
+    const { registerHandler } = useContext(AuthContext);
+    const [error, setError] = useState({});
+    const [serverError, setServerError] = useState(false);
 
     const [inputs, setInputs] = useState({
         email: "",
@@ -19,15 +20,23 @@ export default function LoginForm() {
         setInputs(values => ({ ...values, [name]: value }))
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-       const curErrors = errorService.registerFormError(inputs)
-       setError(curErrors);
+        try {
+            const curErrors = errorService.registerFormError(inputs)
+            setError(curErrors);
 
-       if (Object.keys(curErrors).length === 0 ) {
-        registerHandler( {...inputs});
-       } 
-        
+            if (Object.keys(curErrors).length === 0) {
+
+                await registerHandler({ ...inputs });
+
+            }
+        } catch (err) {
+            debugger;
+            console.log(err);
+            setServerError(true);
+        }
+
     }
 
     return (
@@ -42,6 +51,9 @@ export default function LoginForm() {
                         onChange={handleChange}
                     />
                 </label>
+                {serverError === true &&
+                    <p className={styles.ErrorMessage}>There has been an error</p>
+                }
                 {error.email && (
                     <p className={styles.ErrorMessage}>{error.email}</p>
                 )}
@@ -54,8 +66,8 @@ export default function LoginForm() {
                         onChange={handleChange}
                     />
                     {error.password && (
-                    <p className={styles.ErrorMessage}>{error.password}</p>
-                )}
+                        <p className={styles.ErrorMessage}>{error.password}</p>
+                    )}
                 </label>
                 <p>Repeat Password</p>
                 <label htmlFor='repassword'>

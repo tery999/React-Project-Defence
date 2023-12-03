@@ -35,6 +35,7 @@ function App() {
   }
 
   const registerHandler = async(values) => {
+    try {
     const result = await userService.register(values.email, values.password);
     console.log(result);
     setAuth(result);
@@ -42,6 +43,10 @@ function App() {
     localStorage.setItem("accessToken", result.accessToken)
     }
     navigate("/");
+  }catch (err) {
+    console.log(`ERROR AT REGISTER HANDLER`);
+    throw Error (err);
+  }
   }
 
   const logoutHandlder = () => {
