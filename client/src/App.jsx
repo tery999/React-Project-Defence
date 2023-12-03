@@ -8,7 +8,7 @@ import LogoutForm from "./components/home/logoutForm/LogoutForm"
 import ProductDetails from "./components/productDetails/ProductDetails"
 import ProductEdit from "./components/productEdit/ProductEdit"
 import Cart from "./components/cart/Cart"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import AuthContext from "./context/authContext"
 import * as userService from "./services/userService";
 
@@ -21,7 +21,7 @@ function App() {
   })
   const [cart, setCart] = useState([]);
 
-  const loginHandler = async (values) => {
+  const loginHandler = useCallback( async (values) => {
     try {
    const result = await userService.login(values.email , values.password)
    console.log(result);
@@ -32,9 +32,9 @@ function App() {
       console.log(`THIS IS THE ERROR ${err}`)
       throw Error("ERRPR AT LOGIN HANDLER", {err});
     }
-  }
+  }, []);
 
-  const registerHandler = async(values) => {
+  const registerHandler = useCallback ( async(values) => {
     try {
     const result = await userService.register(values.email, values.password);
     console.log(result);
@@ -47,19 +47,20 @@ function App() {
     console.log(`ERROR AT REGISTER HANDLER`);
     throw Error (err);
   }
-  }
+  } , []);
 
-  const logoutHandlder = () => {
+  const logoutHandlder = useCallback( () => {
     setAuth({});
+    setCart([]);
     localStorage.removeItem("accessToken")
     navigate("/");
-  }
+  } ,[] );
 
   const searchHandler = async (searchValue) => {
 
   }
 
-  const cartBuyHandler = (product) => {
+  const cartBuyHandler = useCallback ( (product) => {
     debugger;
     const productExists = cart.some(prod => {
       if (prod.product.name === product.name) {
@@ -72,7 +73,7 @@ function App() {
     if (productExists === false) {
       setCart(cart => [...cart, {product}]);
     }
-  }
+  } , [cart]);
 
   const DoesProductExistInCart = (product) => {
     if (cart.length === 0) {
@@ -89,7 +90,7 @@ function App() {
     });
 
     return productExists;
-  }
+  };
 
 
   useEffect( ()=> {
@@ -97,6 +98,7 @@ function App() {
   },[cart]);
 
   const values = {
+    cart,
     loginHandler,
     registerHandler,
     logoutHandlder,

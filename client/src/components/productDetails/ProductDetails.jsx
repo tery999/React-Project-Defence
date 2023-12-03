@@ -21,13 +21,14 @@ export default function ProductDetails() {
 
         commentService.getAllCurComments(id)
             .then(setComments)
+
     }, [id]);
 
     useEffect( ()=> {
         let existing = DoesProductExistInCart(product)
         setProductExists(existing);
         console.log("Useeffect on does product exist");
-    }, [product])
+    }, [product]);
 
 
     const addCommentHandler = async (e) => {
