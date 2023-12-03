@@ -9,10 +9,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function ProductDetails() {
     const navigate = useNavigate();
-    const { isLogged, email, userId , cartBuyHandler} = useContext(AuthContext);
+    const { isLogged, email, userId , cartBuyHandler,DoesProductExistInCart} = useContext(AuthContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
+    const [productExists, setProductExists] = useState(false);
 
     useEffect(() => {
         ProductService.getOne(id)
@@ -20,8 +21,14 @@ export default function ProductDetails() {
 
         commentService.getAllCurComments(id)
             .then(setComments)
-            .then(console.log(comments))
-    }, [id])
+    }, [id]);
+
+    useEffect( ()=> {
+        let existing = DoesProductExistInCart(product)
+        setProductExists(existing);
+        console.log("Useeffect on does product exist");
+    }, [product])
+
 
     const addCommentHandler = async (e) => {
         e.preventDefault();
@@ -47,10 +54,8 @@ export default function ProductDetails() {
 
     const buyClickHandler = (product) => {
         cartBuyHandler(product);
-        console.log("Bought");
+        console.log("butClickHandler activated");
     }
-
-
     return (
         <div className={styles.productDetailsMenu}>
             <div className={styles.productContainer}>
@@ -72,9 +77,17 @@ export default function ProductDetails() {
                         </div>
                     )}
 
-                    {product._ownerId !== userId && isLogged && (
+                    {product._ownerId !== userId && isLogged && productExists===true && (
                         <div className="Buttons">
-                            <button onClick={()=>buyClickHandler(product)} className={styles.DeleteButtonProduct}> BUY </button>
+                            <button className={styles.DeleteButtonProduct}> Item added </button>
+                        </div>
+                    )}
+                     {product._ownerId !== userId && isLogged && productExists===false &&(
+                        <div className="Buttons">
+                            <button onClick={()=>
+                                {buyClickHandler(product)
+                                setProductExists(true);
+                                }} className={styles.DeleteButtonProduct}> Buy </button>
                         </div>
                     )}
                 </div>

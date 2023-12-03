@@ -31,7 +31,6 @@ export const getAllCurComments = async (productId) => {
         return [] ;
     }
     const result = await response.json();
-    console.log(result);
     return result;
 };
 

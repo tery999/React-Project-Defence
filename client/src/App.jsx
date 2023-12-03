@@ -63,17 +63,32 @@ function App() {
     debugger;
     const productExists = cart.some(prod => {
       if (prod.product.name === product.name) {
-        console.log("Product already exists")
         return true;
       } else {
-        console.log("Product is added")
+        return false;
+      }
+    });
+    console.log("FINAL IS " ,productExists);
+    if (productExists === false) {
+      setCart(cart => [...cart, {product}]);
+    }
+  }
+
+  const DoesProductExistInCart = (product) => {
+    if (cart.length === 0) {
+      return false;
+    }
+    const productExists = cart.some(prod => {
+      if (prod.product.name === product.name) {
+        console.log("Product already exists 2")
+        return true;
+      } else {
+        console.log("Product doesnt exist 2")
         return false;
       }
     });
 
-    if (productExists === false) {
-      setCart(cart => [...cart, {product}]);
-    }
+    return productExists;
   }
 
 
@@ -86,6 +101,7 @@ function App() {
     registerHandler,
     logoutHandlder,
     cartBuyHandler,
+    DoesProductExistInCart,
     email: auth?.email || null,
     userId: auth?._id || null,
     isLogged: !!auth?.email || null // double exclamation -> convert to true or false
