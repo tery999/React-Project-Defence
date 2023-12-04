@@ -24,6 +24,12 @@ export default function Cart() {
           )
         })}
 
+        {cart.length === 0 && (
+          <div>
+            <h2>You have no items in the cart</h2>
+          </div>
+        )}
+
       </div>
     </div>
   )

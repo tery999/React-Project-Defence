@@ -9,10 +9,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function ProductDetails() {
     const navigate = useNavigate();
-    const { isLogged, email, userId , cartBuyHandler,DoesProductExistInCart} = useContext(AuthContext);
+    const { isLogged, email, userId, cartBuyHandler, DoesProductExistInCart } = useContext(AuthContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
+    const [currentComment, setCurrentComment] = useState("");
     const [productExists, setProductExists] = useState(false);
 
     useEffect(() => {
@@ -24,7 +25,7 @@ export default function ProductDetails() {
 
     }, [id]);
 
-    useEffect( ()=> {
+    useEffect(() => {
         let existing = DoesProductExistInCart(product)
         setProductExists(existing);
         console.log("Useeffect on does product exist");
@@ -32,13 +33,14 @@ export default function ProductDetails() {
 
 
     const addCommentHandler = async (e) => {
+        debugger;
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-
-        const CurComment = await commentService.createComment(id,
-            formData.get("addComment"))
-
-        setComments(state => [...state, { ...CurComment, author: { email } }]);
+        if (currentComment.trim() !== "") {
+            const CurComment = await commentService.createComment(id,
+                currentComment)
+            setCurrentComment("");
+            setComments(state => [...state, { ...CurComment, author: { email } }]);
+        }
     };
 
     const deleteClickHandler = async () => {
@@ -78,17 +80,17 @@ export default function ProductDetails() {
                         </div>
                     )}
 
-                    {product._ownerId !== userId && isLogged && productExists===true && (
+                    {product._ownerId !== userId && isLogged && productExists === true && (
                         <div className="Buttons">
                             <button className={styles.DeleteButtonProduct}> Item added </button>
                         </div>
                     )}
-                     {product._ownerId !== userId && isLogged && productExists===false &&(
+                    {product._ownerId !== userId && isLogged && productExists === false && (
                         <div className="Buttons">
-                            <button onClick={()=>
-                                {buyClickHandler(product)
+                            <button onClick={() => {
+                                buyClickHandler(product)
                                 setProductExists(true);
-                                }} className={styles.DeleteButtonProduct}> Buy </button>
+                            }} className={styles.DeleteButtonProduct}> Buy </button>
                         </div>
                     )}
                 </div>
@@ -97,7 +99,9 @@ export default function ProductDetails() {
                 <div>
                     <label htmlFor="addComment"> Add new comment </label>
                     <form className="commentForm" onSubmit={addCommentHandler}>
-                        <textarea name="addComment" placeholder="Add your comment" />
+                        <textarea name="addComment" placeholder="Add your comment"
+                            value={currentComment}
+                            onChange={(e) => setCurrentComment(e.target.value)} />
                         <input type="submit" />
                     </form>
                 </div>

@@ -6,7 +6,7 @@ export const registerFormError = (inputs) => {
     } else if ( inputs.email.length < 5) {
         returnedErrors.email = "Email must be atleast 5 characters long"
     }
-    if ( !inputs.password.trim()) {
+    if ( !inputs.password.trim() || inputs.password.trim().length < 3) {
         returnedErrors.password = "Password must be atleast 4 characters long"
     }
     if (inputs.password !== inputs.repassword) {
