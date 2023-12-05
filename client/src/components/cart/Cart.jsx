@@ -1,11 +1,25 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import AuthContext from "../../context/authContext"
 import styles from "./cart.module.css"
 
 export default function Cart() {
-  const { cart } = useContext(AuthContext);
+  const { cart,removeProductCartHandler } = useContext(AuthContext);
+  const [total, setTotal] = useState(0);
   console.log(cart);
-  debugger;
+
+  useEffect( ()=> {
+    debugger;
+    const totalPrice = cart.reduce( (tot,curPrice)=> {
+      return tot + Number(curPrice.product.price);
+    },0)
+    setTotal(totalPrice);
+    console.log("Useeffect checker");
+  },[cart])
+
+  const deleteHandlerClick = (prodId) => {
+    removeProductCartHandler(prodId);
+  }
+
   return (
     <div className={styles.CartPageBox}>
       <div className={styles.CartPage}>
@@ -20,9 +34,17 @@ export default function Cart() {
               <p>
                 Price: {prod.product.price}
               </p>
+              <button className={styles.RemoveButton} onClick={()=>deleteHandlerClick(prod.product._id)}>
+                Remove
+              </button>
             </div>
           )
         })}
+        {cart.length !== 0 && (
+          <div>
+            <h2>Total price: {total}</h2>
+          </div>
+        )}
 
         {cart.length === 0 && (
           <div>

@@ -6,13 +6,6 @@ import AuthContext from "../../context/authContext"
 export default function Header() {
 
   const { isLogged, email } = useContext(AuthContext);
-  const [ search, setSearch] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(setSearch);
-  }
-
 
   return (
     <nav className={styles.navStyle}>
@@ -46,19 +39,6 @@ export default function Header() {
           </li>
         </div>
       )}
-      <div>
-        <form className={styles.SearchBar} onSubmit={handleSubmit}>
-          <label htmlFor='search'>
-            <input
-              type="text"
-              name="search"
-              value={search || ""}
-              placeholder="Search"
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </label>
-        </form>
-      </div>
 
     </nav>
   )

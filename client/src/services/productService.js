@@ -56,3 +56,10 @@ export const deleteProduct= async(id) => {
     const result = await response.json()
 }
 
+export const SearchProduct = async (searchName) => {
+    debugger;
+    const response = await fetch(URL);
+    const data = await response.json();
+    const filtered = data.filter ( (prod) => prod.name === searchName);
+    return filtered;
+};

@@ -21,8 +21,8 @@
 
 .productCart {
     display: flex;
-    justify-content: center;
-    align-content: space-around;
+    justify-content: space-between;
+    align-content: space-between;
     align-items: center;
     background-color: azure;
     gap: 50px;
@@ -36,6 +36,15 @@
 }
 
 .productCart img {
-    width: 50px;;
-    height: 50px;
+    width: 70px;;
+    height: 70px;
+    padding: 10px;
+}
+
+.RemoveButton {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding-right: 5px;
+    margin-right: 5px;
 }

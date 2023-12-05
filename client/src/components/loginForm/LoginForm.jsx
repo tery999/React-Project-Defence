@@ -32,6 +32,7 @@ export default function LoginForm() {
                     <input
                         type="text"
                         name="email"
+                        id="email"
                         value={inputs.email || ""}
                         onChange={handleChange}
                     />
@@ -41,6 +42,7 @@ export default function LoginForm() {
                     <input
                         type="password"
                         name="password"
+                        id="password"
                         value={inputs.password || ""}
                         onChange={handleChange}
                     />

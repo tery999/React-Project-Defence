@@ -33,7 +33,6 @@ export default function ProductDetails() {
 
 
     const addCommentHandler = async (e) => {
-        debugger;
         e.preventDefault();
         if (currentComment.trim() !== "") {
             const CurComment = await commentService.createComment(id,

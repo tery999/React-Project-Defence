@@ -56,9 +56,6 @@ function App() {
     navigate("/");
   } ,[] );
 
-  const searchHandler = async (searchValue) => {
-
-  }
 
   const cartBuyHandler = useCallback ( (product) => {
     debugger;
@@ -92,6 +89,12 @@ function App() {
     return productExists;
   };
 
+  const removeProductCartHandler = useCallback ( (prodId) => {
+    debugger;
+    const filteredProducts = cart.filter((item)=> item.product._id !== prodId);
+    setCart(filteredProducts);
+  });
+
 
   useEffect( ()=> {
     console.log(cart)
@@ -104,6 +107,7 @@ function App() {
     logoutHandlder,
     cartBuyHandler,
     DoesProductExistInCart,
+    removeProductCartHandler,
     email: auth?.email || null,
     userId: auth?._id || null,
     isLogged: !!auth?.email || null // double exclamation -> convert to true or false
