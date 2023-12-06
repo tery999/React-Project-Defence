@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from "../../../css/AddProductForm.module.css"
+import styles from "./EditProductForm.module.css"
 import * as productService from "../../services/productService"
 import { useParams, useNavigate } from 'react-router-dom';
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from "../../../css/AddProductForm.module.css"
+import styles from "./AddProductForm.module.css"
 import * as productService from "../../services/productService"
 
 export default function AddProduct() {
@@ -20,52 +20,60 @@ export default function AddProduct() {
     return (
         <div className={styles.DivProduct}>
             <form className={styles.AddProductForm} onSubmit={handleSubmit}>
-                <label htmlFor='name'>Product name:
+                <label htmlFor='name' className={styles.labelStyle}>Product name:
                     <input
                         type="text"
                         name="name"
+                        id="name"
                         value={inputs.name || ""}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor='category'>Category:
+                <label htmlFor='category' className={styles.labelStyle}>Category:
                     <input
                         type="text"
                         name="category"
+                        id="category"
                         value={inputs.category || ""}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor='price'>Price:
+                <label htmlFor='price' className={styles.labelStyle}>Price:
                     <input
                         type="number"
                         name="price"
+                        id="price"
                         value={inputs.price || ""}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="condition">
+                <label htmlFor="condition" className={styles.labelStyle}>
                     Condition:
+                    <select value={inputs.condition || ""} name="condition"
+                        id="condition" onChange={handleChange}>
+                        <option value="New">New</option>
+                        <option value="Minor Use">Minor Use</option>
+                        <option value="Used">Used</option>
+                        <option value="Bad">Bad</option>
+                    </select>
                 </label>
-                <select value={inputs.condition || ""} name="condition" onChange={handleChange}>
-                    <option value="New">New</option>
-                    <option value="Minor Use">Minor Use</option>
-                    <option value="Used">Used</option>
-                    <option value="Bad">Bad</option>
-                </select>
-                <label htmlFor='imageUrl'>imageUrl:
+
+                <label htmlFor='imageUrl' className={styles.labelStyle}>imageUrl:
                     <input
                         type="text"
                         name="imageUrl"
+                        id="imageUrl"
                         value={inputs.imageUrl || ""}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="summary">
+                <label htmlFor="summary" className={styles.labelStyle}>
                     Additional information:
                 </label>
-                <textarea value={inputs.summary || ""}  name="summary" onChange={handleChange} />
+                <textarea value={inputs.summary || ""} name="summary" id="summary" onChange={handleChange} />
+                <div>
                 <input type="submit" />
+                </div>
             </form>
         </div>
     )
