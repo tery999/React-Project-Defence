@@ -1,20 +1,28 @@
 .navStyle {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: row;
     background-color: aqua;
-    height: 160px;
+    height: 100px;
 }
 
 .headerLinks {
     display: flex;
+    flex-direction: row;
     align-items: center; 
-    justify-content: center;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 .headerLinks > li {
-    font-size:  40px;
+    font-size:  35px;
+    list-style-type: none;
+    padding: 5px;
 
+}
+
+.headerLinks a {
+    text-decoration: none;
 }
 
 .SearchBar {
@@ -37,4 +45,11 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.hello {
+    font-size: 26px;
+}
 
+a.active {
+    color: black;
+    font-weight: bold;
+}

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
-import styles from "../../../css/header.module.css"
-import { Link } from "react-router-dom"
+import styles from "./header.module.css"
+import { Link, NavLink } from "react-router-dom"
 import AuthContext from "../../context/authContext"
 
 export default function Header() {
@@ -11,31 +11,45 @@ export default function Header() {
     <nav className={styles.navStyle}>
       {isLogged && (
         <div className={styles.headerLinks}>
-          <p>Hello {email}</p>
+          <p className={styles.hello}>Hello {email}</p>
           <li>
-            <Link to="/">Home</Link>
+          <NavLink to="/" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>Home</NavLink>
           </li>
           <li>
-            <Link to="AddProduct">Add product</Link>
+          <NavLink to="/AddProduct" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>AddProduct</NavLink>
           </li>
           <li>
-            <Link to="Cart">Cart</Link>
+          <NavLink to="/Cart" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>Cart</NavLink>
           </li>
           <li>
-            <Link to="Logout">Logout</Link>
+          <NavLink to="/Logout" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>Logout</NavLink>
           </li>
         </div>
       )}
       {!isLogged && (
         <div className={styles.headerLinks}>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>Home</NavLink>
           </li>
           <li>
-            <Link to="Login">Login</Link>
+          <NavLink to="/Login" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>Login</NavLink>
           </li>
           <li>
-            <Link to="Register">Register</Link>
+          <NavLink to="/Register" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>Register</NavLink>
           </li>
         </div>
       )}
