@@ -18,6 +18,9 @@ export default function Home() {
                 setProducts([]);
             }
         } else {
+            debugger;
+            const allProdsWhenEmpty = await productService.getAll();
+            setProducts(allProdsWhenEmpty);
 
         }
     }

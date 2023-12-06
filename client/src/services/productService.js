@@ -60,6 +60,6 @@ export const SearchProduct = async (searchName) => {
     debugger;
     const response = await fetch(URL);
     const data = await response.json();
-    const filtered = data.filter ( (prod) => prod.name === searchName);
+    const filtered = data.filter ( (prod) => prod.name.toLowerCase() === searchName.toLowerCase());
     return filtered;
 };
