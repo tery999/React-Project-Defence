@@ -12,6 +12,10 @@ export default function AddProduct() {
     }
 
     const handleSubmit = (event) => {
+        debugger;
+        if (inputs.imageUrl === "" || inputs.imageUrl === undefined) {
+            inputs.imageUrl = "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg";
+        }
         event.preventDefault();
         console.log(inputs)
         productService.create(inputs);
