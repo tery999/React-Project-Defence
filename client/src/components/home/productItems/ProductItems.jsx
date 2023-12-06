@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "../../../../css/homeCatalog.module.css"
+import styles from "../homeCatalog.module.css"
 
 export default function productItems({
     _id,
@@ -14,7 +14,9 @@ export default function productItems({
                 <h2>{name}</h2>
                 <h2>{price} $</h2>
                 <h2>{condition}</h2>
-                <Link to={`/Products/${_id}`} className={styles.Details}>Details</Link>
+                <Link to={`/Products/${_id}`} className={styles.Details}> 
+                <button>Details</button>
+                </Link>
         </div>
     );
 }

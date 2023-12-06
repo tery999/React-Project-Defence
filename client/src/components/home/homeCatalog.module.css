@@ -1,0 +1,83 @@
+.homeCatalog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: rgb(230, 230, 230);
+    align-items: center;
+    width: 95%;
+    gap: 20px 20px;
+}
+
+
+
+.allProducts {
+    width: 400px;
+    height: 550px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+
+.allProducts > img {
+    width: 300px;
+    height: 250px;
+    object-fit: fill;
+}
+
+.HomeBox {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.Details button {
+    font-size: 25px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.SearchField {
+    background-color: lightslategray;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.SearchBar {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    height: 45px;
+}
+
+.SearchBar input[type="text"]{
+    border: 2px;
+    border-style: solid;
+    font-size: 20px;
+    width: 250px;
+    height: 35px;
+}
+
+.SearchBar input[type="submit"]{
+    padding: 0px;
+    border-top:    2px ;
+    border-right:  2px ;
+    border-bottom: 2px ;
+    border-left: 0px;
+    border-style: solid;
+    border-radius: 0px 20px 20px 0px;
+    border-color: black;
+    font-size: 20px;
+    width: 100px;
+    height: 40px;
+    background-color: rgb(72, 72, 242);
+    color: white;
+}

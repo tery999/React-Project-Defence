@@ -4,6 +4,7 @@
     align-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 20px;
 }
 
 .productContainer {
@@ -12,6 +13,7 @@
     align-content: center;
     align-items: center;
     flex-direction: row;
+    margin-top: 20px;
 }
 
 .productDetailsCard{

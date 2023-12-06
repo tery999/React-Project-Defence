@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import * as productService from "../../services/productService"
 import ProductItems from "./productItems/ProductItems"
-import styles from "../../../css/homeCatalog.module.css"
+import styles from "./homeCatalog.module.css"
 
 export default function Home() {
     const [products, setProducts] = useState([]);
@@ -32,8 +32,8 @@ export default function Home() {
     }, []);
 
     return (
-        <div className={styles.text}>
-            <div className='SearchField'>
+        <div className={styles.HomeBox}>
+            <div className={styles.SearchField}>
                 <form className={styles.SearchBar} onSubmit={handleSearchSubmit}>
                     <label htmlFor='search'>
                         <input
@@ -41,7 +41,7 @@ export default function Home() {
                             name="search"
                             id="search"
                             value={search || ""}
-                            placeholder="Search"
+                            placeholder="Search by name...."
                             onChange={(e) => setSearch(e.target.value)}
                         />
                         <input type="submit" value="Search" />

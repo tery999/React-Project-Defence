@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import * as ProductService from "../../services/productService"
 import { useContext, useEffect, useState } from "react";
-import styles from "../../../css/productDetailsMenu.module.css";
+import styles from "./productDetailsMenu.module.css";
 import * as commentService from "../../services/commentService"
 import AuthContext from "../../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
