@@ -87,3 +87,7 @@
     background-color: rgb(72, 72, 242);
     color: white;
 }
+
+.SearchBar input[type="submit"]:hover{
+    background-color: rgb(96, 96, 255);
+}

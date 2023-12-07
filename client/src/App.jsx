@@ -11,53 +11,54 @@ import Cart from "./components/cart/Cart"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import AuthContext from "./context/authContext"
 import * as userService from "./services/userService";
+import PrivateRoute from "./components/privateRoute/PrivateRoute"
 
 function App() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(()=> {
+  const [auth, setAuth] = useState(() => {
     // initial function to delete token , return empty object
     localStorage.removeItem("accessToken");
     return {};
   })
   const [cart, setCart] = useState([]);
 
-  const loginHandler = useCallback( async (values) => {
+  const loginHandler = useCallback(async (values) => {
     try {
-   const result = await userService.login(values.email , values.password)
-   console.log(result);
-   setAuth(result);
-   localStorage.setItem("accessToken", result.accessToken)
-   navigate("/");
+      const result = await userService.login(values.email, values.password)
+      console.log(result);
+      setAuth(result);
+      localStorage.setItem("accessToken", result.accessToken)
+      navigate("/");
     } catch (err) {
       console.log(`THIS IS THE ERROR ${err}`)
-      throw Error("ERRPR AT LOGIN HANDLER", {err});
+      throw Error("ERRPR AT LOGIN HANDLER", { err });
     }
   }, []);
 
-  const registerHandler = useCallback ( async(values) => {
+  const registerHandler = useCallback(async (values) => {
     try {
-    const result = await userService.register(values.email, values.password);
-    console.log(result);
-    setAuth(result);
-    if(result.accessToken !== undefined) {
-    localStorage.setItem("accessToken", result.accessToken)
+      const result = await userService.register(values.email, values.password);
+      console.log(result);
+      setAuth(result);
+      if (result.accessToken !== undefined) {
+        localStorage.setItem("accessToken", result.accessToken)
+      }
+      navigate("/");
+    } catch (err) {
+      console.log(`ERROR AT REGISTER HANDLER`);
+      throw Error(err);
     }
-    navigate("/");
-  }catch (err) {
-    console.log(`ERROR AT REGISTER HANDLER`);
-    throw Error (err);
-  }
-  } , []);
+  }, []);
 
-  const logoutHandlder = useCallback( () => {
+  const logoutHandlder = useCallback(() => {
     setAuth({});
     setCart([]);
     localStorage.removeItem("accessToken")
     navigate("/");
-  } ,[] );
+  }, []);
 
 
-  const cartBuyHandler = useCallback ( (product) => {
+  const cartBuyHandler = useCallback((product) => {
     debugger;
     const productExists = cart.some(prod => {
       if (prod.product.name === product.name) {
@@ -66,11 +67,11 @@ function App() {
         return false;
       }
     });
-    console.log("FINAL IS " ,productExists);
+    console.log("FINAL IS ", productExists);
     if (productExists === false) {
-      setCart(cart => [...cart, {product}]);
+      setCart(cart => [...cart, { product }]);
     }
-  } , [cart]);
+  }, [cart]);
 
   const DoesProductExistInCart = (product) => {
     if (cart.length === 0) {
@@ -89,16 +90,16 @@ function App() {
     return productExists;
   };
 
-  const removeProductCartHandler = useCallback ( (prodId) => {
+  const removeProductCartHandler = useCallback((prodId) => {
     debugger;
-    const filteredProducts = cart.filter((item)=> item.product._id !== prodId);
+    const filteredProducts = cart.filter((item) => item.product._id !== prodId);
     setCart(filteredProducts);
   });
 
 
-  useEffect( ()=> {
+  useEffect(() => {
     console.log(cart)
-  },[cart]);
+  }, [cart]);
 
   const values = {
     cart,
@@ -121,13 +122,15 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/AddProduct" element={<AddProduct />} />
           <Route path="/Login" element={<LoginForm />} />
           <Route path="/Register" element={<RegisterForm />} />
-          <Route path="/Logout" element={<LogoutForm />} />
           <Route path="/Products/:id" element={<ProductDetails />} />
-          <Route path="/Products/:id/edit" element={<ProductEdit />} />
-          <Route path="Cart" element={<Cart/>} />
+          <Route element={<PrivateRoute/>}>
+            <Route path="/AddProduct" element={<AddProduct />} />
+            <Route path="/Logout" element={<LogoutForm />} />
+            <Route path="/Products/:id/edit" element={<ProductEdit />} />
+            <Route path="Cart" element={<Cart />} />
+          </Route>
         </Routes>
 
       </>

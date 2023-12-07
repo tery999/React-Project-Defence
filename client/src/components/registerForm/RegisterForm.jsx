@@ -47,6 +47,7 @@ export default function registerForm() {
                     <input
                         type="text"
                         name="email"
+                        id="email"
                         value={inputs.email || ""}
                         onChange={handleChange}
                     />
@@ -62,6 +63,7 @@ export default function registerForm() {
                     <input
                         type="password"
                         name="password"
+                        id="password"
                         value={inputs.password || ""}
                         onChange={handleChange}
                     />
@@ -74,6 +76,7 @@ export default function registerForm() {
                     <input
                         type="password"
                         name="repassword"
+                        id="repassword"
                         value={inputs.repassword || ""}
                         onChange={handleChange}
                     />
