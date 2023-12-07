@@ -15,3 +15,23 @@ export const registerFormError = (inputs) => {
     console.log(returnedErrors);
     return returnedErrors;
 }
+
+export const addProductValidation = (inputs) => {
+    console.log(inputs);
+    const returnedErrors = {};
+    if (!inputs.name.trim()) {
+        returnedErrors.name = "Name cannot be blank"
+    }
+    if ( !inputs.category.trim()) {
+        returnedErrors.category = "Please add a category"
+    }
+    if (!inputs.price.trim()) {
+        returnedErrors.price = "Please add a price"
+    }
+
+    if (!inputs.condition.trim()) {
+        returnedErrors.condition = "Select item condition"
+    }
+    console.log(returnedErrors);
+    return returnedErrors;
+}
