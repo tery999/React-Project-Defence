@@ -1,0 +1,9 @@
+.notFoundBox {
+    display: flex;
+    justify-content: center;
+}
+
+.notFoundBox img{
+    margin-top: 20px;
+   height: 550px;
+}

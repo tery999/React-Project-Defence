@@ -7,6 +7,7 @@ import RegisterForm from "./components/registerForm/RegisterForm"
 import LogoutForm from "./components/home/logoutForm/LogoutForm"
 import ProductDetails from "./components/productDetails/ProductDetails"
 import ProductEdit from "./components/productEdit/ProductEdit"
+import { PageNotFound } from "./components/404Page/PageNotFound"
 import Cart from "./components/cart/Cart"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import AuthContext from "./context/authContext"
@@ -125,6 +126,7 @@ function App() {
           <Route path="/Login" element={<LoginForm />} />
           <Route path="/Register" element={<RegisterForm />} />
           <Route path="/Products/:id" element={<ProductDetails />} />
+          <Route path="*" element={<PageNotFound />} />
           <Route element={<PrivateRoute/>}>
             <Route path="/AddProduct" element={<AddProduct />} />
             <Route path="/Logout" element={<LogoutForm />} />
