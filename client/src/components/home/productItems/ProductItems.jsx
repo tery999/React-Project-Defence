@@ -19,7 +19,7 @@ export default function productItems({
                 <h2>{price} $</h2>
                 <h2>{condition}</h2>
                 <Link to={`/Products/${_id}`} className={styles.Details}> 
-                <button>Details</button>
+                <button className={styles.button}>Details</button>
                 </Link>
         </div>
     );

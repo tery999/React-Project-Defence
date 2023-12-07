@@ -47,13 +47,13 @@ export default function Cart() {
           )
         })}
         {cart.length !== 0 && (
-          <div>
+          <div className={styles.TotalPrice}>
             <h2>Total price: {total}</h2>
           </div>
         )}
 
         {cart.length === 0 && (
-          <div>
+          <div className={styles.NoItems}>
             <h2>You have no items in the cart</h2>
           </div>
         )}

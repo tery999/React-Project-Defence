@@ -1,21 +1,26 @@
 
 .CartPageBox {
     display: flex;
-    margin-top: 20px;
     justify-content: center;
+    flex-wrap: wrap;
     align-content: center;
     align-items: center;
-    flex-direction: column;
 
 }
 
 .CartPage {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 20px;
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    width: 800px;
+    background-color:azure;
+    width: 85%;
+    border: 2px;
+    border-style: solid;
+    border-radius: 20px;
+    min-height: 500px;
 
 }
 
@@ -24,8 +29,9 @@
     justify-content: space-between;
     align-content: space-between;
     align-items: center;
-    background-color: azure;
-    gap: 50px;
+    background-color: white;
+    width: 80%;
+    /* gap: 50px; */
     border: 2px ;
     margin-bottom: 10px;
     border-style: solid;
@@ -59,4 +65,12 @@
     font-weight: bold;
     padding-right: 5px;
     margin-right: 5px;
+}
+
+.NoItems {
+    text-align: center;
+}
+
+.TotalPrice{
+    text-align: right;
 }
