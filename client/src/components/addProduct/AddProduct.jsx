@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from "react-router-dom"
 import styles from "./AddProductForm.module.css"
 import * as productService from "../../services/productService"
 import * as errorService from "../../services/errorService"
 
 export default function AddProduct() {
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({
         name: "",
         category: "",
@@ -31,6 +33,7 @@ export default function AddProduct() {
             }
 
             await  productService.create(inputs);
+            navigate("/");
 
         }
     }

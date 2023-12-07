@@ -62,7 +62,11 @@ export default function ProductDetails() {
         <div className={styles.productDetailsMenu}>
             <div className={styles.productContainer}>
                 <div className={styles.productDetailsCard}>
-                    <img src={product.imageUrl} />
+                <img src={product.imageUrl} 
+                onError={ event => {
+                    event.target.src = "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg"
+                    event.onerror = null
+                }}/>
                 </div>
                 <div className={styles.productDetailsCard}>
                     <h2 className={styles.title}>{product.name}</h2>
@@ -99,6 +103,7 @@ export default function ProductDetails() {
                     <label htmlFor="addComment"> Add new comment </label>
                     <form className="commentForm" onSubmit={addCommentHandler}>
                         <textarea name="addComment" placeholder="Add your comment"
+                        id="addComment"
                             value={currentComment}
                             onChange={(e) => setCurrentComment(e.target.value)} />
                         <input type="submit" />

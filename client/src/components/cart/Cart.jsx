@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/authContext"
 import styles from "./cart.module.css"
 
@@ -8,7 +9,7 @@ export default function Cart() {
   console.log(cart);
 
   useEffect( ()=> {
-    debugger;
+    // debugger;
     const totalPrice = cart.reduce( (tot,curPrice)=> {
       return tot + Number(curPrice.product.price);
     },0)
@@ -27,10 +28,15 @@ export default function Cart() {
         {cart.map((prod) => {
           return (
             <div className={styles.productCart} key={prod.product._id}>
+              <Link to={`/Products/${prod.product._id}`}>
               <img src={prod.product.imageUrl} />
+
+              </Link>
+              <Link to={`/Products/${prod.product._id}`}>
               <p>
                 Name: {prod.product.name}
               </p>
+              </Link>
               <p>
                 Price: {prod.product.price}
               </p>

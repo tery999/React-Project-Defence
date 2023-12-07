@@ -35,6 +35,18 @@
     font-size: 20px;
 }
 
+.productCart a {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.productCart a p:hover {
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
 .productCart img {
     width: 70px;;
     height: 70px;
