@@ -14,10 +14,12 @@
 }
 .RegisterForm p {
     font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .RegisterForm input[type=text], input[type=password] {
-    width: 100%;
+    width: 300px;
     font-size: 25px;
     text-align: center;
     padding: 12px 20px;
@@ -45,5 +47,7 @@
   }
   
   .ErrorMessage {
+    margin-top: 10px;
+    margin-bottom: 15px;
     color: red;
   }

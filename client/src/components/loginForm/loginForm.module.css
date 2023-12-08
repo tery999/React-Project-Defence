@@ -14,10 +14,11 @@
 }
 .loginForm p {
     font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .loginForm input[type=text], input[type=password] {
-    width: 100%;
+    width: 300px;
     font-size: 25px;
     text-align: center;
     padding: 12px 20px;

@@ -67,10 +67,10 @@ export default function registerForm() {
                         value={inputs.password || ""}
                         onChange={handleChange}
                     />
-                    {error.password && (
+                </label>
+                {error.password && (
                         <p className={styles.ErrorMessage}>{error.password}</p>
                     )}
-                </label>
                 <p>Repeat Password</p>
                 <label htmlFor='repassword'>
                     <input

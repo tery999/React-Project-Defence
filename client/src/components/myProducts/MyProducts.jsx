@@ -9,6 +9,7 @@ export default function MyProducts() {
     const { userId } = useContext(AuthContext);
 
     useEffect(() => {
+        debugger;
         productService.getAllOwned(userId)
             .then(result => setMyProd(result))
             .then(console.log(myProd))
@@ -41,7 +42,7 @@ export default function MyProducts() {
                         <button className={styles.Delete} onClick={() => deleteClickHandler(prod._id)}> Delete </button>
                     </div>)
                 })}
-                {!myProd && (
+                {myProd.length === 0 && (
                     <div className={styles.IfNoItemsBox}>
                         <h2>You have no items for sale </h2>
                         <Link to={`/AddProduct`}>
