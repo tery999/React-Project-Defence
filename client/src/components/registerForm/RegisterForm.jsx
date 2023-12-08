@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import styles from "../../../css/registerForm.module.css"
-import AuthContext from '../../context/authContext';
+import {AuthContext} from '../../context/authContext';
 import * as errorService from "../../services/errorService"
 
 export default function registerForm() {

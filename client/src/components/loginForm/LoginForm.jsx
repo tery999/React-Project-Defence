@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import styles from "../../../css/loginForm.module.css"
-import AuthContext from '../../context/authContext';
+import {AuthContext} from '../../context/authContext';
 
 export default function LoginForm() {
     const { loginHandler , email } = useContext(AuthContext);

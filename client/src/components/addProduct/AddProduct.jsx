@@ -21,7 +21,7 @@ export default function AddProduct() {
         setInputs(values => ({ ...values, [name]: value }))
     }
 
-    const handleSubmit =async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const validationErrors = errorService.addProductValidation(inputs);
@@ -32,7 +32,7 @@ export default function AddProduct() {
                 inputs.imageUrl = "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg";
             }
 
-            await  productService.create(inputs);
+            await productService.create(inputs);
             navigate("/");
 
         }
@@ -84,7 +84,9 @@ export default function AddProduct() {
                     Condition:
                     <select value={inputs.condition || ""} name="condition"
                         id="condition" onChange={handleChange}>
-                        <option value="" disabled selected  hidden>Condition....</option>
+                        <option disabled={true} value="">
+                            Condition...
+                        </option>
                         <option value="New">New</option>
                         <option value="Minor Use">Minor Use</option>
                         <option value="Used">Used</option>
@@ -108,9 +110,9 @@ export default function AddProduct() {
                 <label htmlFor="summary" className={styles.labelStyle}>
                     Additional information:
                 </label>
-                <textarea value={inputs.summary || ""} name="summary" 
-                placeholder="Additional information...&#10;*Not required&#10;"
-                id="summary" onChange={handleChange} />
+                <textarea value={inputs.summary || ""} name="summary"
+                    placeholder="Additional information...&#10;*Not required&#10;"
+                    id="summary" onChange={handleChange} />
                 <div>
                     <input type="submit" />
                 </div>

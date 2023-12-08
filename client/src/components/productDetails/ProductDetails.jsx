@@ -3,7 +3,7 @@ import * as ProductService from "../../services/productService"
 import { useContext, useEffect, useState } from "react";
 import styles from "./productDetailsMenu.module.css";
 import * as commentService from "../../services/commentService"
-import AuthContext from "../../context/authContext";
+import {AuthContext} from "../../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
 
 

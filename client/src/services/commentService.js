@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import AuthContext from "../context/authContext";
+import {AuthContext} from "../context/authContext";
 
 const URL = "http://localhost:3030/data/comments";
 

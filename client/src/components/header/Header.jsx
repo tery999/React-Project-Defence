@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import styles from "./header.module.css"
 import { Link, NavLink } from "react-router-dom"
-import AuthContext from "../../context/authContext"
+import {AuthContext} from "../../context/authContext"
 
 export default function Header() {
 
