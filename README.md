@@ -17,6 +17,8 @@ Guests are not able to comment or buy.
 
 Logged-in users can add new products in the AddProduct page. There is a validation, which
 checks if the fields ( name, category, price, condition ) are empty and shows an error message.
+The additional information field can be left empty. The URL will be replaced by default "No Image"
+picture if left empty.
 Logged in users, can Delete or Edit their own offers. There is also validation on the Edit page.
 
 Logged-in users can view their Cart page, which shows all the products in their basket.
@@ -36,14 +38,18 @@ If there is no path matching the url, a 404 Error page is shown.
 Technologies used:
 -----------------------
 HTML, CSS
+
 Javascript
+
 React
 
 
 HOW TO START:
 --------------------------
 Go to client terminal and type `npm create vite .` for the client application.
+
 `npm install`
+
 `npm run dev`
 
 Go to server terminal and run "node server.js" for the backend server.
