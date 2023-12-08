@@ -42,3 +42,55 @@
     font-weight: bold;
     width: 222px;
 }
+
+.DeleteButtonComment:hover{
+    background-color: rgb(201, 0, 0);
+}
+
+.Information {
+   font-size: 15px;
+}
+.InformationTitle {
+    margin-bottom: 5px;
+ }
+
+.AddCommentBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.commentForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.commentForm textarea{
+   width: 100%;
+}
+
+.ProductComments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.ProductComments ul {
+ padding: 5px;
+ margin: 5px;
+}
+
+.InvidualComment {
+    border: 2px;
+    border-style: solid;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-color: rgb(139, 139, 255);
+    border-radius: 10px;
+    width: 500px;
+}

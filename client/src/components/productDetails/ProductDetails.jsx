@@ -73,7 +73,8 @@ export default function ProductDetails() {
                     <h2> Category: {product.category} </h2>
                     <h2> Price: {product.price} $</h2>
                     <h2> Condition: {product.condition}</h2>
-                    <h2> Information: {product.summary}</h2>
+                    <h2 className={styles.InformationTitle}>Information:</h2>
+                    <h2 className={styles.Information}> {product.summary}</h2>
                     {product._ownerId === userId && (
                         <div className="Buttons">
 
@@ -99,9 +100,9 @@ export default function ProductDetails() {
                 </div>
             </div>
             {isLogged && (
-                <div>
+                <div className={styles.AddCommentBox}>
                     <label htmlFor="addComment"> Add new comment </label>
-                    <form className="commentForm" onSubmit={addCommentHandler}>
+                    <form className={styles.commentForm} onSubmit={addCommentHandler}>
                         <textarea name="addComment" placeholder="Add your comment"
                         id="addComment"
                             value={currentComment}
@@ -117,11 +118,11 @@ export default function ProductDetails() {
                 </div>
             )}
 
-            <div className="ProductComments">
+            <div className={styles.ProductComments}>
                 <h2>Comments:</h2>
                 <ul>
                     {comments.map((com) => {
-                        return (<div key={com._id}>
+                        return (<div key={com._id} className={styles.InvidualComment}>
                             <p> {com.author.email}:  {com.comment} </p>
                             {com._ownerId === userId && (
                                 <button onClick={() => commentDeleteClickHandler(com._id)}

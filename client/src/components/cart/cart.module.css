@@ -67,6 +67,10 @@
     margin-right: 5px;
 }
 
+.RemoveButton:hover {
+    background-color: rgb(218, 0, 0);
+}
+
 .NoItems {
     text-align: center;
 }
