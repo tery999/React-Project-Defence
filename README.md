@@ -5,7 +5,7 @@ Softuni React Project - Project Defense Single Page Application - Online Marketp
 
 FUNCTIONALITY:
 --------------------------
-The project is an online marketplace, where people can view and buy products.
+The project is an online marketplace, where people can view, buy and sell products.
 
 Users can view all products on the home/calatog page. 
 They can also go to the details page of the products and see all the information about said item.
@@ -15,7 +15,7 @@ Logged-in users can place comments on all offers, as well as delete their own co
 They can buy the desired articles, which are placed in their Cart page.
 Guests are not able to comment or buy.
 
-Logged-in users can add new products in the AddProduct page. There is a validation, which
+Logged-in users can add new products for sale in the AddProduct page. There is a validation, which
 checks if the fields ( name, category, price, condition ) are empty and shows an error message.
 The additional information field can be left empty. The URL will be replaced by default "No Image"
 picture if left empty.
