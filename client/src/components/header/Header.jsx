@@ -28,6 +28,11 @@ export default function Header() {
             }>Cart</NavLink>
           </li>
           <li>
+          <NavLink to="/MyProducts" className={({ isActive }) =>
+            isActive ? styles.active : ""
+            }>MyProducts</NavLink>
+          </li>
+          <li>
           <NavLink to="/Logout" className={({ isActive }) =>
             isActive ? styles.active : ""
             }>Logout</NavLink>

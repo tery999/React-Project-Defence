@@ -8,6 +8,14 @@ export const getAll = async () => {
     return data;
 };
 
+export const getAllOwned = async (userId) => {
+    const response = await fetch(URL);
+    const data = await response.json();
+    const filtered = data.filter ( (prod) => prod._ownerId === userId );
+
+    return filtered;
+};
+
 export const getOne = async (id) => {
     const response = await fetch(`${URL}/${id}`);
     const data = await response.json();

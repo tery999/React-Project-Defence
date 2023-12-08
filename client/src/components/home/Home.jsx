@@ -48,7 +48,7 @@ export default function Home() {
                     </label>
                 </form>
             </div>
-            <h1>Products List</h1>
+            <h1>Catalog</h1>
 
             <div className={styles.homeCatalog}>
 

@@ -1347,8 +1347,8 @@
                     "category": "Home Appliances",
                     "price": "40",
                     "condition": "Good",
-                    "imageUrl": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/01/action-adventure-games-tomb-raider.jpg",
-                    "summary": "Summary here",
+                    "imageUrl": "https://www.ifbappliances.com/media/catalog/product/cache/f6d60de4095a6e5204f81c04aa5b766f/s/e/senator_wss_steam_8.5kg_front_load_fv_1.png",
+                    "summary": "The best washing mashine. Selling it cause it doesnt work",
                     "_id": "c64db398-91cd-487c-b900-86058c0422f8"
                 },
                 "daf55cd4-9aa1-4b7a-82a9-fbdb74aaa84b": {
@@ -1356,8 +1356,8 @@
                     "category": "Electronics",
                     "price": "140",
                     "condition": "Used",
-                    "imageUrl": "https://img.freepik.com/free-vector/joystick-game-sport-technology_138676-2045.jpg?w=2000",
-                    "summary": "asdasdasd",
+                    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRknGKe2HsUmaJOVZTKJoHVWWdwK7wLx6UGhA&usqp=CAU",
+                    "summary": "Samsung TV 1080p very good, please buy",
                     "_id": "daf55cd4-9aa1-4b7a-82a9-fbdb74aaa84b"
                 },
                 "18bfdb21-333b-42bd-a32c-c114263f2569": {
@@ -1365,9 +1365,18 @@
                     "category": "Electronics",
                     "price": "340",
                     "condition": "New",
-                    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Ultimate_MK3.png/220px-Ultimate_MK3.png",
-                    "summary": "PS6",
+                    "imageUrl": "https://media.wired.com/photos/5fab1094227dbb78ec30db78/1:1/w_1801,h_1801,c_limit/Gear-PS5-src-Sony.jpg",
+                    "summary": "The PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment. It was announced as the successor to the PlayStation 4 in April 2019, was launched on November 12, 2020, in Australia, Japan, New Zealand, North America, and South Korea, and was released worldwide one week later. The PS5 is part of the ninth generation of video game consoles, along with Microsoft's Xbox Series X/S consoles, which were released in the same month.",
                     "_id": "18bfdb21-333b-42bd-a32c-c114263f2569"
+                },
+                "18bfdb21-333b-42bd-a32c-c184263f2569": {
+                    "name": "Private Jet",
+                    "category": "Planes",
+                    "price": "85000",
+                    "condition": "Used",
+                    "imageUrl": "https://cfsjets.com/wp-content/uploads/2022/11/2020-G500-updated-ext-389x260.jpg",
+                    "summary": "Selling my private jet, because I purchased a new one. Can hold up to 6 people, its used but in very good condition. Price is non-negotiable",
+                    "_id": "18bfdb21-333b-42bd-a32c-c184263f2569"
                 }
             
             

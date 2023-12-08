@@ -31,9 +31,16 @@ Login and Register pages use validation. If any field is empty or the length is 
 pops up under the fields. An additional error message is shown if there is error with the server response 
    ( For example if user with this email already exists )
 
+Logged in users can access the "MyProducts" page, which stores all the products they have created.
+Each listing has an "View","Edit" and "Delete" buttons for quick navigation and ability to delete/edit.
+
 All users can use the Search function, which shows all products matching the name.
 
 If there is no path matching the url, a 404 Error page is shown.
+
+Protected routes:
+Cart page, AddProduct page, MyProducts Edit Page are protected routes. If user isnt logged in,
+they will be redirected to the Login page.
 
 Technologies used:
 -----------------------

@@ -76,9 +76,9 @@ export default function ProductDetails() {
                     <h2 className={styles.InformationTitle}>Information:</h2>
                     <h2 className={styles.Information}> {product.summary}</h2>
                     {product._ownerId === userId && (
-                        <div className="Buttons">
+                        <div className={styles.buttons}>
 
-                            <Link to={`/Products/${id}/edit`} className="Button"> <button> EDIT </button></Link>
+                            <Link to={`/Products/${id}/Edit`} > <button className={styles.EditButtonProduct}> EDIT </button></Link>
 
                             <button onClick={deleteClickHandler} className={styles.DeleteButtonProduct}> DELETE </button>
                         </div>
@@ -86,7 +86,7 @@ export default function ProductDetails() {
 
                     {product._ownerId !== userId && isLogged && productExists === true && (
                         <div className="Buttons">
-                            <button className={styles.DeleteButtonProduct}> Item added </button>
+                            <button className={styles.ItemAdded}> Item added </button>
                         </div>
                     )}
                     {product._ownerId !== userId && isLogged && productExists === false && (
@@ -94,21 +94,22 @@ export default function ProductDetails() {
                             <button onClick={() => {
                                 buyClickHandler(product)
                                 setProductExists(true);
-                            }} className={styles.DeleteButtonProduct}> Buy </button>
+                            }} className={styles.BuyButton}> Buy </button>
                         </div>
                     )}
                 </div>
             </div>
             {isLogged && (
                 <div className={styles.AddCommentBox}>
-                    <label htmlFor="addComment"> Add new comment </label>
+                    <label htmlFor="addComment">
                     <form className={styles.commentForm} onSubmit={addCommentHandler}>
                         <textarea name="addComment" placeholder="Add your comment"
                         id="addComment"
                             value={currentComment}
                             onChange={(e) => setCurrentComment(e.target.value)} />
-                        <input type="submit" />
+                        <input type="submit" className={styles.submitComment}/>
                     </form>
+                    </label>
                 </div>
             )}
 
@@ -123,7 +124,8 @@ export default function ProductDetails() {
                 <ul>
                     {comments.map((com) => {
                         return (<div key={com._id} className={styles.InvidualComment}>
-                            <p> {com.author.email}:  {com.comment} </p>
+                            <p className={styles.PEmail}> {com.author.email}: </p>
+                            <p> {com.comment} </p>
                             {com._ownerId === userId && (
                                 <button onClick={() => commentDeleteClickHandler(com._id)}
                                     className={styles.DeleteButtonComment}>Delete Comment</button>

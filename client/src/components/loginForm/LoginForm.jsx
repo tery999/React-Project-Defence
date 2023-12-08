@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import styles from "../../../css/loginForm.module.css"
+import styles from "./loginForm.module.css"
 import {AuthContext} from '../../context/authContext';
 
 export default function LoginForm() {

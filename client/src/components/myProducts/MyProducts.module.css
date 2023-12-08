@@ -1,0 +1,98 @@
+.MyProductPageBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.MyProductPageBox > h2 {
+    font-size: 35px;
+    
+}
+
+.MyProductLists {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.IndividualList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    
+}
+
+.IndividualList h2 {
+    margin: 5px;
+    
+}
+
+.IndividualList img {
+    margin: 5px;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.IndividualList button {
+    margin: 5px;
+    height: 35px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.View {
+    background-color: chartreuse;
+}
+
+.View:hover{
+    background-color: rgb(111, 223, 0);
+    font-weight: bold;
+}
+
+.Edit {
+    background-color: lightblue;
+}
+
+.Edit:hover{
+    background-color:rgb(152, 210, 230);
+    font-weight: bold;
+}
+
+.Delete {
+    background-color: red;
+}
+
+.Delete:hover{
+    background-color:rgb(223, 0, 0);
+    font-weight: bold;
+}
+
+.IfNoItemsBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.addItemButton {
+    width: 230px;
+    height: 70px;
+    border: solid 3px darkblue;
+    background-color: rgb(53, 53, 241);
+    border-radius: 30px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.addItemButton:hover {
+    background-color: rgb(72, 72, 255);
+ 
+}

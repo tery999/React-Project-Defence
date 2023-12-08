@@ -24,15 +24,17 @@ export default function Cart() {
   return (
     <div className={styles.CartPageBox}>
       <div className={styles.CartPage}>
-        This is the cart Page
+      {cart.length !== 0 && (
+          <h2>Your cart</h2>
+        )}
         {cart.map((prod) => {
           return (
             <div className={styles.productCart} key={prod.product._id}>
-              <Link to={`/Products/${prod.product._id}`}>
+              <Link to={`/Products/Details/${prod.product._id}`}>
               <img src={prod.product.imageUrl} />
 
               </Link>
-              <Link to={`/Products/${prod.product._id}`}>
+              <Link to={`/Products/Details/${prod.product._id}`}>
               <p>
                 Name: {prod.product.name}
               </p>

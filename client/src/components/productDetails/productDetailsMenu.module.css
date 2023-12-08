@@ -15,6 +15,9 @@
     flex-direction: row;
     margin-top: 20px;
     gap: 20px;
+    border: 2px solid lightgrey;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .productDetailsCard{
@@ -26,14 +29,19 @@
 }
 
 .productDetailsCard img {
-        width: 650px;
-        height: 600px;
+        max-width: 650px;
+        max-height: 600px;
         object-fit: contain;
       
 }
 
 .title {
     font-size: 40px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
 }
 
 .DeleteButtonComment{
@@ -49,6 +57,7 @@
 
 .Information {
    font-size: 15px;
+   max-width: 400px;
 }
 .InformationTitle {
     margin-bottom: 5px;
@@ -66,10 +75,12 @@
 .commentForm {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .commentForm textarea{
-   width: 100%;
+   width: 450px;
 }
 
 .ProductComments {
@@ -86,6 +97,8 @@
 }
 
 .InvidualComment {
+    display: flex;
+    flex-direction: column;
     border: 2px;
     border-style: solid;
     margin-bottom: 5px;
@@ -94,3 +107,78 @@
     border-radius: 10px;
     width: 500px;
 }
+
+.PEmail {
+    margin: 0px;
+    font-weight: bold;
+}
+
+.submitComment {
+    background-color: rgb(43, 43, 252);
+    height: 30px;
+    width: 150px;
+    color: white;
+    font-weight: bold;
+    border: 2px;
+    border-style: none;
+    border-radius: 20px;
+}
+
+.submitComment:hover {
+    background-color: rgb(73, 73, 252);
+  
+}
+
+.DeleteButtonProduct {
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 26px;
+    border: 1px solid black;
+}
+
+.DeleteButtonProduct:hover {
+    background-color: rgb(228, 0, 0);
+    font-weight: bold;
+}
+
+.EditButtonProduct {
+    background-color: blue;
+    color: white;
+    width: 100px;
+    height: 26px;
+    border: 1px solid black;
+}
+
+.EditButtonProduct:hover {
+    background-color: rgb(0, 0, 228);
+    font-weight: bold;
+}
+
+.BuyButton {
+    background-color: rgb(247,137,42);
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+}
+
+.BuyButton:hover{
+    background-color: rgb(226, 121, 30);
+}
+
+.ItemAdded {
+    background-color: rgb(137, 173, 186);
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
