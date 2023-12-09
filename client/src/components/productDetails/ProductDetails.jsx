@@ -58,6 +58,9 @@ export default function ProductDetails() {
         cartBuyHandler(product);
         console.log("butClickHandler activated");
     }
+
+    // debugger;
+    // console.log(userId,isLogged,email);
     return (
         <div className={styles.productDetailsMenu}>
             <div className={styles.productContainer}>

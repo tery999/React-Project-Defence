@@ -18,7 +18,6 @@ export const ContextProvider = ({
     const loginHandler = useCallback(async (values) => {
         try {
             const result = await userService.login(values.email, values.password)
-            console.log(result);
             setAuth(result);
             localStorage.setItem("accessToken", result.accessToken)
             navigate("/");
@@ -52,7 +51,7 @@ export const ContextProvider = ({
 
 
     const cartBuyHandler = useCallback((product) => {
-        debugger;
+        // debugger;
         const productExists = cart.some(prod => {
             if (prod.product.name === product.name) {
                 return true;
@@ -102,9 +101,9 @@ export const ContextProvider = ({
         cartBuyHandler,
         DoesProductExistInCart,
         removeProductCartHandler,
-        email: auth?.email || null,
-        userId: auth?._id || null,
-        isLogged: !!auth?.email || null // double exclamation -> convert to true or false
+        email: auth.email ??= null,
+        userId: auth._id ??= null ,
+        isLogged: !!auth.email 
     }
     return (
         <AuthContext.Provider value={values}>
