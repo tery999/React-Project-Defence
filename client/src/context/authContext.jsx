@@ -8,9 +8,15 @@ export const ContextProvider = ({
     children,
 }) => {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState(() => {
-        // initial function to delete token , return empty object
-        localStorage.removeItem("accessToken");
+    const [auth, setAuth] = useState(()=>{
+        // debugger;
+        const locStrToken = localStorage.getItem("accessToken");
+        const locStrEmail = localStorage.getItem("email");
+        const locStrId = localStorage.getItem("_id");
+
+        if ( locStrEmail && locStrToken) {
+            return {email: locStrEmail , accessToken: locStrToken , _id: locStrId};
+        }
         return {};
     })
     const [cart, setCart] = useState([]);
@@ -20,6 +26,8 @@ export const ContextProvider = ({
             const result = await userService.login(values.email, values.password)
             setAuth(result);
             localStorage.setItem("accessToken", result.accessToken)
+            localStorage.setItem("email", result.email)
+            localStorage.setItem("_id", result._id)
             navigate("/");
         } catch (err) {
             console.log(`THIS IS THE ERROR ${err}`)
@@ -34,6 +42,8 @@ export const ContextProvider = ({
             setAuth(result);
             if (result.accessToken !== undefined) {
                 localStorage.setItem("accessToken", result.accessToken)
+                localStorage.setItem("email", result.email)
+                localStorage.setItem("_id", result._id)
             }
             navigate("/");
         } catch (err) {
@@ -46,6 +56,8 @@ export const ContextProvider = ({
         setAuth({});
         setCart([]);
         localStorage.removeItem("accessToken")
+        localStorage.removeItem("email")
+        localStorage.removeItem("_id")
         navigate("/");
     }, []);
 
@@ -83,7 +95,7 @@ export const ContextProvider = ({
     };
 
     const removeProductCartHandler = useCallback((prodId) => {
-        debugger;
+        // debugger;
         const filteredProducts = cart.filter((item) => item.product._id !== prodId);
         setCart(filteredProducts);
     });
