@@ -113,9 +113,9 @@ export const ContextProvider = ({
         cartBuyHandler,
         DoesProductExistInCart,
         removeProductCartHandler,
-        email: auth.email ??= null,
-        userId: auth._id ??= null ,
-        isLogged: !!auth.email 
+        email: auth?.email ?? null,
+        userId: auth?._id ?? null, 
+        isLogged: !!auth?.email 
     }
     return (
         <AuthContext.Provider value={values}>
